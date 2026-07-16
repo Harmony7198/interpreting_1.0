@@ -45,32 +45,17 @@ function createSidebar() {
   nav.className = "nav flex-column";
 
   const menus = [
-    {
-      page: "dashboard",
-      icon: "bi-speedometer2",
-      text: "Dashboard"
-    },
-    {
-      page: "translations",
-      icon: "bi-translate",
-      text: "Translations"
-    },
-    {
-      page: "tags",
-      icon: "bi-tags",
-      text: "Tags"
-    },
-    {
-      page: "statistics",
-      icon: "bi-bar-chart",
-      text: "Statistics"
-    },
-    {
-      page: "settings",
-      icon: "bi-gear",
-      text: "Settings"
-    }
-  ];
+  {
+    page: "translations",
+    icon: "bi-translate",
+    text: "Translations"
+  },
+  {
+    page: "settings",
+    icon: "bi-gear",
+    text: "Settings"
+  }
+];
 
   menus.forEach((menu) => {
     nav.appendChild(createMenuItem(menu));
@@ -124,7 +109,7 @@ function createMainArea() {
 
   const title = document.createElement("h4");
   title.className = "mb-0";
-  title.textContent = "Dashboard";
+  title.textContent = "Translations";
   title.setAttribute(
     "data-testid",
     "page-title"

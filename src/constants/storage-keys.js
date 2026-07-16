@@ -6,6 +6,5 @@
 
 export const STORAGE_KEYS = Object.freeze({
   TRANSLATIONS: "interpreting.translations",
-  TAGS: "interpreting.tags",
   SETTINGS: "interpreting.settings"
 });

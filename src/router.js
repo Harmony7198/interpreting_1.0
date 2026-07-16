@@ -1,21 +1,14 @@
-import { render as renderDashboard } from "./pages/dashboard/dashboard.js";
 import { render as renderTranslations } from "./pages/translations/translations.js";
-import { render as renderTags } from "./pages/tags/tags.js";
-import { render as renderStatistics } from "./pages/statistics/statistics.js";
 import { render as renderSettings } from "./pages/settings/settings.js";
 import { render as renderNotFound } from "./pages/not-found/not-found.js";
 
 const routes = {
-  dashboard: renderDashboard,
   translations: renderTranslations,
-  tags: renderTags,
-  statistics: renderStatistics,
   settings: renderSettings
 };
 
 export function initializeRouter() {
   window.addEventListener("hashchange", navigate);
-
   navigate();
 }
 
@@ -68,13 +61,13 @@ function getCurrentPage() {
   const hash = window.location.hash;
 
   if (!hash) {
-    window.location.hash = "#/dashboard";
-    return "dashboard";
+    window.location.hash = "#/translations";
+    return "translations";
   }
 
   const page = hash.replace("#/", "");
 
-  return page || "dashboard";
+  return page || "translations";
 }
 
 function highlightActiveMenu(page) {

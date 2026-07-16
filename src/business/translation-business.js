@@ -211,3 +211,62 @@ export function validateTranslation(
     );
   }
 }
+/**
+ * Filters translations by language.
+ *
+ * @param {Array} translations
+ * @param {string} language
+ * @returns {Array}
+ */
+export function filterByLanguage(
+  translations,
+  language
+) {
+
+  if (!language) {
+    return [...translations];
+  }
+
+
+  return translations.filter(
+    (translation) =>
+      translation.sourceLanguage === language ||
+      translation.targetLanguage === language
+  );
+}
+
+
+/**
+ * Filters favorite translations.
+ *
+ * @param {Array} translations
+ * @param {string} status
+ * @returns {Array}
+ */
+export function filterByFavorite(
+  translations,
+  status
+) {
+
+  if (status === "favorite") {
+
+    return translations.filter(
+      (translation) =>
+        translation.isFavorite === true
+    );
+
+  }
+
+
+  if (status === "normal") {
+
+    return translations.filter(
+      (translation) =>
+        translation.isFavorite === false
+    );
+
+  }
+
+
+  return [...translations];
+}

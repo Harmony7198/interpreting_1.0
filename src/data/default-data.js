@@ -10,10 +10,7 @@
  */
 export const DEFAULT_TRANSLATIONS = [];
 
-/**
- * Default tags collection.
- */
-export const DEFAULT_TAGS = [];
+
 
 /**
  * Default application settings.
@@ -34,7 +31,6 @@ export const DEFAULT_SETTINGS = {
 export function createDefaultData() {
   return {
     translations: [...DEFAULT_TRANSLATIONS],
-    tags: [...DEFAULT_TAGS],
     settings: {
       ...DEFAULT_SETTINGS
     }

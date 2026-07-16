@@ -20,11 +20,6 @@ class StorageService {
     );
 
     this.#initializeCollection(
-      STORAGE_KEYS.TAGS,
-      defaults.tags
-    );
-
-    this.#initializeCollection(
       STORAGE_KEYS.SETTINGS,
       defaults.settings
     );
@@ -50,25 +45,6 @@ class StorageService {
     this.#write(STORAGE_KEYS.TRANSLATIONS, translations);
   }
 
-  /**
-   * Get all tags.
-   * @returns {Array}
-   */
-  getTags() {
-    return this.#read(STORAGE_KEYS.TAGS, []);
-  }
-
-  /**
-   * Save tags.
-   * @param {Array} tags
-   */
-  saveTags(tags) {
-    if (!Array.isArray(tags)) {
-      throw new Error("Tags must be an array.");
-    }
-
-    this.#write(STORAGE_KEYS.TAGS, tags);
-  }
 
   /**
    * Get application settings.

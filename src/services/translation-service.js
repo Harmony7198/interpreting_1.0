@@ -5,9 +5,7 @@ import {
   updateTranslation,
   deleteTranslation,
   findTranslationById,
-  searchTranslations
 } from "../business/translation-business.js";
-
 /**
  * Translation Service
  * ------------------------
@@ -131,29 +129,13 @@ class TranslationService {
    * @param {string} keyword
    * @returns {Array}
    */
-  search(keyword) {
-    const translations =
-      storageService.getTranslations();
 
-    return searchTranslations(
-      translations,
-      keyword
-    );
-  }
 
   /**
    * Returns favorite translations.
    *
    * @returns {Array}
    */
-  getFavorites() {
-    return storageService
-      .getTranslations()
-      .filter(
-        (translation) =>
-          translation.isFavorite
-      );
-  }
 
   /**
    * Toggles favorite status.
@@ -161,22 +143,10 @@ class TranslationService {
    * @param {string} id
    * @returns {Object}
    */
-  toggleFavorite(id) {
-    const translation =
-      this.getById(id);
 
-    if (!translation) {
-      throw new Error(
-        "Translation not found."
-      );
-    }
-
-    return this.update(id, {
-      isFavorite:
-        !translation.isFavorite
-    });
-  }
 }
+const service = new TranslationService();
+
 
 export const translationService =
-  new TranslationService();
+    new TranslationService();
