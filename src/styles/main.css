@@ -1,0 +1,303 @@
+/* ==========================================================
+   Interpreting 1.0
+   Main Stylesheet
+========================================================== */
+
+:root {
+  --sidebar-width: 260px;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  --color-border: #e5e7eb;
+
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  --radius: 10px;
+
+  --transition: 0.2s ease;
+}
+
+/* ==========================================================
+   Global
+========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 2px;
+}
+
+/* ==========================================================
+   App Layout
+========================================================== */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ==========================================================
+   Sidebar
+========================================================== */
+
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+
+  display: flex;
+  flex-direction: column;
+
+  background: #212529;
+
+  box-shadow: var(--shadow-md);
+
+  transition: transform var(--transition);
+}
+
+.sidebar-brand {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+
+  padding: 0.75rem 1.5rem;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  border: 0;
+  background: transparent;
+
+  transition: background var(--transition),
+              color var(--transition);
+}
+
+.sidebar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.sidebar .nav-link.active {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+
+.sidebar .nav-link i {
+  width: 24px;
+  text-align: center;
+}
+
+/* ==========================================================
+   Content
+========================================================== */
+
+.content-wrapper {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.topbar {
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+
+  background: var(--color-surface);
+
+  box-shadow: var(--shadow-sm);
+
+  z-index: 10;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.main-content h1 {
+  margin-bottom: 0.75rem;
+}
+
+/* ==========================================================
+   Cards
+========================================================== */
+
+.card {
+  border: none;
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================
+   Tables
+========================================================== */
+
+.table {
+  background: var(--color-surface);
+}
+
+.table thead th {
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   Forms
+========================================================== */
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.2);
+}
+
+/* ==========================================================
+   Badge
+========================================================== */
+
+.badge {
+  font-weight: 500;
+}
+
+/* ==========================================================
+   Toast Container
+========================================================== */
+
+.toast-container {
+  z-index: 1080;
+}
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.empty-state {
+  text-align: center;
+
+  padding: 4rem 1rem;
+
+  color: var(--color-text-muted);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width: 991.98px) {
+
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+
+    box-shadow: none;
+  }
+
+  .sidebar-brand {
+    text-align: center;
+  }
+
+  .sidebar-nav .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+
+    padding: 0.75rem;
+  }
+
+  .sidebar .nav-link {
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .main-content {
+    padding: 1.25rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .topbar h2 {
+    font-size: 1.15rem;
+  }
+
+  .main-content {
+    padding: 1rem !important;
+  }
+
+  .display-6 {
+    font-size: 1.8rem;
+  }
+}
