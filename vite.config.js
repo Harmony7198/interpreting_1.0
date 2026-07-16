@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "./",
+  base: "/interpreting_1.0/",
 
   server: {
     host: "localhost",
