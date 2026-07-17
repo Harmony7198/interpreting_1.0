@@ -1,8 +1,18 @@
 import {
-    initializeTranslationViewer,
-    openTranslationViewer
+  exportTranslations
 }
-from "../../components/translation-view.js";
+  from "../../services/export-service.js";
+
+import {
+  importTranslations
+}
+  from "../../services/import-service.js";
+
+import {
+  initializeTranslationViewer,
+  openTranslationViewer
+}
+  from "../../components/translation-view.js";
 
 import { translationService } from "../../services/translation-service.js";
 
@@ -77,12 +87,108 @@ export function render(container) {
 
     }
   );
+  const exportButton =
+    document.createElement("button");
 
+  exportButton.className =
+    "btn btn-success ms-2";
 
-  header.append(
-    title,
-    addButton
+  exportButton.innerHTML = `
+<i class="bi bi-download"></i>
+Export
+`;
+
+  exportButton.addEventListener(
+    "click",
+    () => {
+
+      exportTranslations(
+        translationService.getAll()
+      );
+
+    }
   );
+
+  const importButton =
+    document.createElement("button");
+
+  importButton.className =
+    "btn btn-secondary ms-2";
+
+  importButton.innerHTML = `
+<i class="bi bi-upload"></i>
+Import
+`;
+
+  const fileInput =
+    document.createElement("input");
+
+  fileInput.type = "file";
+
+  fileInput.accept = ".json";
+
+  fileInput.hidden = true;
+
+fileInput.addEventListener(
+    "change",
+    async (event) => {
+
+        if (!event.target.files.length) {
+            return;
+        }
+
+        try {
+
+            const data =
+                await importTranslations(
+                    event.target.files[0]
+                );
+
+            translationService.replaceAll(
+                data
+            );
+
+            alert(
+                "Imported successfully!"
+            );
+
+            render(container);
+
+        }
+
+        catch (error) {
+
+            alert(error.message);
+
+        }
+
+    }
+);
+
+importButton.addEventListener(
+    "click",
+    () => {
+
+        fileInput.click();
+
+    }
+);
+
+
+const buttonGroup =
+    document.createElement("div");
+
+buttonGroup.append(
+    addButton,
+    exportButton,
+    importButton,
+    fileInput
+);
+
+header.append(
+    title,
+    buttonGroup
+);
 
 
   container.append(
@@ -251,22 +357,22 @@ function createRow(
     row.querySelectorAll("button");
 
 
-const viewButton = buttons[0];
+  const viewButton = buttons[0];
 
-const editButton = buttons[1];
+  const editButton = buttons[1];
 
-const deleteButton = buttons[2];
+  const deleteButton = buttons[2];
 
-viewButton.addEventListener(
+  viewButton.addEventListener(
     "click",
     () => {
 
-        openTranslationViewer(
-            translation
-        );
+      openTranslationViewer(
+        translation
+      );
 
     }
-);
+  );
 
   editButton.addEventListener(
     "click",

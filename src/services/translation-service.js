@@ -122,7 +122,21 @@ class TranslationService {
       updatedTranslations
     );
   }
+replaceAll(translations) {
 
+    if (!Array.isArray(translations)) {
+
+        throw new Error(
+            "Invalid translations data."
+        );
+
+    }
+
+    storageService.saveTranslations(
+        translations
+    );
+
+}
   /**
    * Searches translations.
    *
@@ -143,6 +157,24 @@ class TranslationService {
    * @param {string} id
    * @returns {Object}
    */
+
+
+replaceAll(translations) {
+
+    if (!Array.isArray(translations)) {
+
+        throw new Error(
+            "Invalid translation data."
+        );
+
+    }
+
+    storageService.saveTranslations(
+        translations
+    );
+
+}
+
 
 }
 const service = new TranslationService();
